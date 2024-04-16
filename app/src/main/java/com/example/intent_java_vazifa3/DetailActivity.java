@@ -1,6 +1,6 @@
 package com.example.intent_java_vazifa3;
 
-import android.nfc.Tag;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -8,10 +8,11 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.intent_java_vazifa3.user.User;
 
 public class DetailActivity extends AppCompatActivity {
     public final String TAG =  DetailActivity.class.toString();
+    TextView tv_user_home_id;
+    TextView tv_user_home_pw;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,11 +21,18 @@ public class DetailActivity extends AppCompatActivity {
         initViews();
     }
     void initViews(){
-        TextView tv_detail = findViewById(R.id.tv_detail);
+        tv_user_home_id = findViewById(R.id.tv_user_home_id);
+        tv_user_home_pw = findViewById(R.id.tv_user_home_pw);
 
-        User user = (User) getIntent().getParcelableExtra("user");
-        Log.d(TAG, user.toString());
+        String Userid = getIntent().getStringExtra("Userid");
+        Log.d(TAG, Userid);
 
-        tv_detail.setText(user.toString());
+        String Userpw = getIntent().getStringExtra("Userpw");
+        Log.d(TAG, Userpw);
+
+        tv_user_home_id.setText(Userid);
+        tv_user_home_pw.setText(Userpw);
     }
+
+
 }
